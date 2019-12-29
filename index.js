@@ -6,7 +6,7 @@ const defaultOptions = {
   lower: true,
   digits: true,
   symbols: '@$#~+-*=_',
-  count: 1,
+  count: 20,
   json: false,
 };
 
@@ -22,11 +22,7 @@ const union = (setA, setB) => {
   });
 };
 
-module.exports = (req, res) => {
-  const { length, upper, lower, digits, symbols, count, json } = {
-    ...defaultOptions,
-    ...req.query,
-  };
+const makeCharacterSet = ({ upper, lower, digits, symbols }) => {
   const chars = new Set();
   if (isTruthy(upper)) {
     union(chars, uppercaseSet);
@@ -40,12 +36,25 @@ module.exports = (req, res) => {
   if (symbols) {
     union(chars, new Set(symbols));
   }
-  const finalChars = Array.from(chars.values());
-  const passwords = [];
+  return Array.from(chars.values());
+};
+
+const makePasswords = ({ length, count, chars }) => {
   const times = Math.max(1, Math.min(1000, count));
+  const passwords = [];
   for (let index = 0; index < times; index += 1) {
-    passwords.push(randomString(length, finalChars));
+    passwords.push(randomString(length, chars));
   }
+  return passwords;
+};
+
+module.exports = (req, res) => {
+  const { length, count, json, ...charSetOption } = {
+    ...defaultOptions,
+    ...req.query,
+  };
+  const chars = makeCharacterSet(charSetOption);
+  const passwords = makePasswords({ length, count, chars });
   if (isTruthy(json)) {
     res.json({ passwords });
     return;

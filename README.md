@@ -9,7 +9,7 @@
 | `symbols` | any printable ASCII | `@$#~+-*=_` | Will be used in the password |
 | `json` | `true` or `false` | `false` | `true` for returning JSON string |
 | `length` | any positive number | `20` | Set the password length |
-| `count` | `1` to `1000` | `1` | The number of passwords to generate |
+| `count` | `1` to `1000` | `20` | The number of passwords to generate |
 
 
 ## Examples
