@@ -6,9 +6,9 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "now dev",
-    "deploy": "now",
-    "deploy:prod": "now --prod",
+    "start": "vercel dev",
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod",
     "test": "jest --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
