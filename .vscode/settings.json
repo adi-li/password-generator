@@ -1,0 +1,24 @@
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "never",
+        "source.organizeImports.biome": "explicit",
+        "quickfix.biome": "explicit"
+    },
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "biomejs.biome",
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "biomejs.biome",
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "biomejs.biome",
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "biomejs.biome",
+    },
+}
